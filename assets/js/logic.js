@@ -34,27 +34,27 @@ function startQuiz() {
     questionsScreen.classList.remove('hide');
     intializeQuiz();
     startTimer();
-    showQuesiton();
+    showQuestion();
 }
 
 //timer
 function startTimer() {
-    timerInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
     timeLeft--;
     timerElement.textContent = timeLeft;
 
-    if (timerleft <= 0) {
-        clearInterval(timerInterval);
+    if (timeleft <= 0) {
+        clearInterval(timeInterval);
         endQuiz();
     }
     }, 1000);
 }
 
 //Display questions and choices
-function showQuesiton() {
+function showQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
     const questionTitleElement = document.getElementById('questions-title');
-    const choices = currentQuestions.choices;
+    const choices = currentQuestion.choices;
 
     questionTitleElement.textContent = currentQuestion.title;
     choicesContainer.innerHTML = '';
@@ -88,7 +88,7 @@ function handleChoice () {
     //move to next question
     currentQuestionIndex++;
 
-    //check if quis is over
+    //check if quiz is over
     if (currentQuestionIndex === questions.length) {
         endQuiz();
     } else {
