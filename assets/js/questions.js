@@ -2,7 +2,7 @@ var questions = [
     {
         title: 'Question 1: An Array organizes data so that a related set of values can be easily sorted or searched.',
         choices: ['True', 'False'],
-        answer: true
+        answer: 0
     },
     {
         title: 'Question 2: The condition in an if/else statement is enclosed within ________.',
