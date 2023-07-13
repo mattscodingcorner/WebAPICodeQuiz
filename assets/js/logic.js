@@ -42,11 +42,6 @@ function startTimer() {
     timeInterval = setInterval(function () {
     timeLeft--;
     timerElement.textContent = timeLeft;
-
-    if (timeleft <= 0) {
-        clearInterval(timeInterval);
-        endQuiz();
-    }
     }, 1000);
 }
 
@@ -96,7 +91,13 @@ function handleChoice () {
     }
 }
 
-//end quiz
+function endQuiz() {
+    clearInterval(timerInterval);
+    questionsScreen.classList.add('hide');
+    endScreen.classList.remove('hide');
+    finalScoreElement.textContent = score;
+}
+
 function saveHighscore() {
     const initials = initialsInput.value.trim();
 
@@ -106,5 +107,34 @@ function saveHighscore() {
         highscores.push(newScore);
         localStorage.setItem('highscores', JSON.stringify(highscores));
         window.location.href = 'highscores.html'; //redirect to highscores page
+
+        //clear input field
+        initialsInput.value = '';
+        alert('High score saved!');
     }
 }
+
+submitButton.addEventListener('click', function (){
+    saveHighscore();
+    window.location.href ='highscore.html';
+});
+
+//retrieve high scores from LocalStorage
+function getHighscores() {
+    const highscores = JSON.parse(localStorage.getItem('highscores')) || [];
+}
+
+function populateHighscores() {
+    const highscoresList = document.getElementById('highscores-list');
+    const highscores = JSON.parse(localStorage.getItem('highscores')) || [];
+
+    highscoresList.innerHTML = ''; //clear exisitng list
+
+    highscores.forEach(function (score) {
+        const liElement = document.createElement('li');
+        liElement.textContent = '${score.initials}: ${score.score}';
+        highscoresList.appendChild(liElement);
+    });
+}
+
+window.addEventListener('load', populateHighscores);

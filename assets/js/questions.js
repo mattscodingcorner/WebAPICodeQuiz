@@ -8,6 +8,11 @@ var questions = [
         title: 'Question 2: The condition in an if/else statement is enclosed within ________.',
         choices: ['Curly brackets', 'Square brackets', 'Parentheses', 'Angle brackets'],
         answer: 2
+    },
+    {
+        title: 'Question 3: To use a function you must define it somewhere in the scope from wich you wish to call it.',
+        choices: ['True', 'False'],
+        answer: 0
     }
 ];
 
