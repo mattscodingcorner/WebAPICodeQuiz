@@ -10,6 +10,12 @@ const initialsInput = document.getElementById('submit');
 const finalScoreElement = document.getElementById('final-score');
 const submitButton = document.getElementById('submit');
 
+//retrieve high scores from LocalStorage
+function getHighscores() {
+    return JSON.parse(localStorage.getItem('highscores')) || [];
+  }
+
+const highscores = getHighscores()
 
 //Quiz variables
 let currentQuestionIndex = 0;
@@ -116,25 +122,19 @@ function saveHighscore() {
 
 submitButton.addEventListener('click', function (){
     saveHighscore();
-    window.location.href ='highscore.html';
+    window.location.href ='./assets/scores.html';
 });
 
-//retrieve high scores from LocalStorage
-function getHighscores() {
-    const highscores = JSON.parse(localStorage.getItem('highscores')) || [];
-}
-
-function populateHighscores() {
+  function populateHighscores() {
     const highscoresList = document.getElementById('highscores-list');
-    const highscores = JSON.parse(localStorage.getItem('highscores')) || [];
-
-    highscoresList.innerHTML = ''; //clear exisitng list
-
+  
+    highscoresList.innerHTML = '';
+  
     highscores.forEach(function (score) {
-        const liElement = document.createElement('li');
-        liElement.textContent = '${score.initials}: ${score.score}';
-        highscoresList.appendChild(liElement);
+      const liElement = document.createElement('li');
+      liElement.textContent = `${score.initials}: ${score.score}`;
+      highscoresList.appendChild(liElement);
     });
-}
-
-window.addEventListener('load', populateHighscores);
+  }
+  
+  window.addEventListener('load', populateHighscores);
