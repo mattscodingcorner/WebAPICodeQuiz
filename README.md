@@ -2,7 +2,7 @@
 
 ## Description
 
-    * This is a coding quiz with a functional timer that will decrease in time if you answer correctly and should have the functionality to record the highscores at once the quiz has been finished. 
+    * This is a coding quiz with a functional timer that will decrease in time if you answer incorrectly and should have the functionality to record the highscores at once the quiz has been finished. 
 
     * The purpose of this project is build a functional quiz and further build upon my JavaScript knowledge and functional capabilites to build HTML sites.
     
